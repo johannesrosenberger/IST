@@ -4,6 +4,7 @@ This repository contains all scripts necessary to setup and evaluate an Incremen
 IST_generator.py
 * Can be used to create machine readable programs for the IST.
 * Simply follow the commands displayed in the console and the script returns a machine readable txt-file as well as a visualization of your ramp file.
+* The following example has a maximum strain of 1 %, a strain rate of 0.1 % per second and 20 steps.
 
 ![Screenshot of a generated IST program](https://private-user-images.githubusercontent.com/94892196/386638255-d5c6abaf-0917-4730-a4c7-afcf286d1a3e.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE2ODExOTcsIm5iZiI6MTczMTY4MDg5NywicGF0aCI6Ii85NDg5MjE5Ni8zODY2MzgyNTUtZDVjNmFiYWYtMDkxNy00NzMwLWE0YzctYWZjZjI4NmQxYTNlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE1VDE0MjgxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWNhMzQ4NGIzZGNkZjIyYjY3NTQwODY0YjM1MTMwYTEwYTczYWM2OTIxMmE0MDZlMjhmYzQ3Yzg1MmVhMzgzYjYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.s7M9zId6OH_H0janQvGp4f_Q4DY5tbVwNFIDDGU79u4)
 
@@ -21,3 +22,4 @@ IST_solver.py
 * IST_solver.py and IST_config.json must be in the same folder in order for the command to work like proposed. Of course you can also store the config file somewhere else.
 * IST_solver.py outputs a visual analysis of the evaluation for the first block and your defined *eval_block*.
 
+![Evaluation_AOX-LCF-A9-4_block-18](https://github.com/user-attachments/assets/f0c825f2-ba3c-401d-acc1-339c42147762)
