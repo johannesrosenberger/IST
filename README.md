@@ -1,7 +1,7 @@
 # IST repository
 This repository contains all scripts necessary to setup and evaluate an Incremental Step Test (IST). 
 
-IST_generator.py
+### *IST_generator.py*
 * Can be used to create machine readable programs for the IST.
 * Simply follow the commands displayed in the console and the script returns a machine readable txt-file as well as a visualization of your ramp file. Both files are name after the following pattern, where ... resembles your input parameters. \
   IST-eps_max_...-eps_dot_...-steps_... (.txt or .png)
@@ -10,7 +10,7 @@ IST_generator.py
 
 ![Screenshot of a generated IST program](https://private-user-images.githubusercontent.com/94892196/386638255-d5c6abaf-0917-4730-a4c7-afcf286d1a3e.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE2ODExOTcsIm5iZiI6MTczMTY4MDg5NywicGF0aCI6Ii85NDg5MjE5Ni8zODY2MzgyNTUtZDVjNmFiYWYtMDkxNy00NzMwLWE0YzctYWZjZjI4NmQxYTNlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE1VDE0MjgxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWNhMzQ4NGIzZGNkZjIyYjY3NTQwODY0YjM1MTMwYTEwYTczYWM2OTIxMmE0MDZlMjhmYzQ3Yzg1MmVhMzgzYjYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.s7M9zId6OH_H0janQvGp4f_Q4DY5tbVwNFIDDGU79u4)
 
-IST_solver.py
+### *IST_solver.py*
 * The IST_solver uses the IST_config.json to read the output of an IST and calculates the Ramberg-Osgood parameters. 
   * *l0*: Enter the initial clip gage length in µm.
   * *d1*, *d2*, *d3*: Provide the specimen diameter in mm.
