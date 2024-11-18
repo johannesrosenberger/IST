@@ -1,11 +1,11 @@
 {
-    "l0": 5018,
-    "d1": 4.939,
-    "d2": 4.939,
-    "d3": 4.939,
-	"skip_rows": 17,
-    "max_strain": 1.5,
-    "youngs_modulus": 70000,
-	"eval_block": 2,
-    "txt_path": "C:\\Users\\ros\\Nextcloud\\IST Versuche\\240423\\AYW-AlSi10Mg-Rz-1\\AYW-AlSi10Mg-Rz-1.txt"
+    "l0": 7864,
+    "d1": 5.798,
+    "d2": 5.793,
+    "d3": 5.799,
+    "skip_rows": 17,
+    "max_strain": 1.0,
+    "youngs_modulus": 210000,
+    "eval_block": 18,
+    "txt_path": "examples\\AOX-LCF-A9-4.txt"
 }
