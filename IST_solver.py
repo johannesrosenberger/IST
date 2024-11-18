@@ -166,9 +166,6 @@ def ramberg_osgood_evaluation(config_file_path):
                 ext_max = np.ceil(np.max(df["ext_soll_true"]) / 20) * 20
                 min_stress = np.floor(np.min(df["true_stress"]) / 100) * 100
                 max_stress = np.ceil(np.max(df["true_stress"]) / 100) * 100 
-                if i == 0:
-                    print(t_max)
-                    print(df["kraft"])
                 
                 fig, axs = plt.subplots(2, 2, figsize=(12, 9))
                        
