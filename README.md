@@ -25,9 +25,12 @@ This repository contains all scripts necessary to setup and evaluate an Incremen
   * The 3rd and 5th column (*ext_ist*  and *ext_soll*) are the actual and the target value of the extension.
   * The 4th column *mweg* corresponds to the machine displacement.
   * The 6th column *zyklen* tells the IST block.  
-* To start the script, simpy enter the following command into your console: \
-  *python .\IST_solver.py --config_path .\IST_config.json* 
-* IST_solver.py and IST_config.json must be in the same folder in order for the command to work like proposed. Of course you can also store the config file somewhere else.
 * IST_solver.py outputs a visual analysis of the evaluation for the first block and your defined *eval_block*, as well as a csv-file where the Ramberg-Osgood parameters are stored.
 
 ![Evaluation_AOX-LCF-A9-4_block-18](https://github.com/user-attachments/assets/f0c825f2-ba3c-401d-acc1-339c42147762)
+
+### *Run a test*
+* After cloning the repo, simply run the script by entering the following command into your console: \
+  *python .\IST_solver.py --config_path .\IST_config.json* 
+* IST_solver.py and IST_config.json must be in the same folder in order for the command to work like proposed.
+* The *txt_path* variable in IST_config will automatically link to the test data in the test folder.
