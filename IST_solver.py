@@ -26,7 +26,6 @@ def ramberg_osgood_evaluation(config_file_path):
     youngs_modulus = config["youngs_modulus"]
     eval_block = config["eval_block"]
     path = config["txt_path"]
-    print(path)
     
     #%% File processing
     # Read the file in binary mode
@@ -108,14 +107,14 @@ def ramberg_osgood_evaluation(config_file_path):
                 ascending_turning_points_df = turning_points_df[turning_points_df["true_strain"]>0.0001]
                 ascending_turning_points_df = ascending_turning_points_df.sort_values(by="true_strain").reset_index(drop=True)
                 #%% Ramberg-Osgood
-                true_strain = ascending_turning_points_df["true_strain"]
-                true_stress = ascending_turning_points_df["true_stress"]
+                true_strain = ascending_turning_points_df["true_strain"][1:]
+                true_stress = ascending_turning_points_df["true_stress"][1:]
                 
                 true_elastic_strain = true_stress / youngs_modulus
                 true_plastic_strain = true_strain - true_elastic_strain
                 
                 # Create a boolean mask for values where both true_elastic_strain and true_plastic_strain are non-negative
-                mask = (true_elastic_strain >= 0) & (true_plastic_strain >= 0)
+                mask = (true_elastic_strain >= 0) & (true_plastic_strain >= 0.0001)
                 # Apply the mask to filter out negative values in all arrays
                 true_strain = true_strain[mask]
                 true_stress = true_stress[mask]
@@ -208,10 +207,9 @@ def ramberg_osgood_evaluation(config_file_path):
                 axs[1,1].legend(loc="upper left")
                 
                 plt.savefig(f"{folder}/Evaluation_{basename}_block-{block_list[i]}.png")
-                # plt.show(block=False)
         
     plt.show()
-    # plt.pause(0.1)
+
     # Create a DataFrame and save to CSV
     ro_data_df = pd.DataFrame(ramberg_osgood_data)
     ro_data_df.to_csv(f"{folder}/Ramberg-Osgood_{basename}.csv", index=False)
