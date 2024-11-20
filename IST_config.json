@@ -7,5 +7,5 @@
     "max_strain": 1.0,
     "youngs_modulus": 210000,
     "eval_block": 18,
-    "txt_path": "examples\\AOX-LCF-A9-4.txt"
+    "txt_path": "test\\AOX-LCF-A9-4.txt"
 }
