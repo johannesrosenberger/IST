@@ -14,7 +14,7 @@ import os
 import pandas as pd
 
 #%% User input
-def ramberg_osgood_evaluation(config_file_path):
+def ramberg_osgood_evaluation(config_file_path=r".\IST_config.json"):
     # Load JSON data
     with open(config_file_path, 'r') as file:
         config = json.load(file)
@@ -26,7 +26,7 @@ def ramberg_osgood_evaluation(config_file_path):
     youngs_modulus = config["youngs_modulus"]
     eval_block = config["eval_block"]
     path = config["txt_path"]
-    
+
     #%% File processing
     # Read the file in binary mode
     with open(path, 'rb') as file:
@@ -166,26 +166,25 @@ def ramberg_osgood_evaluation(config_file_path):
                 min_stress = np.floor(np.min(df["true_stress"]) / 100) * 100
                 max_stress = np.ceil(np.max(df["true_stress"]) / 100) * 100 
                 
-                fig, axs = plt.subplots(2, 2, figsize=(12, 9))
-                       
+                plt.rcParams.update({'font.size': 16})
+                fig, axs = plt.subplots(2, 2, figsize=(16, 12))
+                
                 axs[0,0].plot(df["zeit_block"], df["kraft"], label=f"{basename}")
                 axs[0,0].set(xlim=(0, t_max), xticks=np.arange(0, t_max+0.0001, tckr), xlabel=("$t_{block}$ [s]"),
-                             ylim=(f_min, f_max), yticks=np.arange(f_min, f_max+0.0001, 5), ylabel=("Force [kN]"))
+                             ylim=(f_min, f_max), yticks=np.arange(f_min, f_max+0.0001, 2.5), ylabel=("Force [kN]"))
                 axs[0,0].minorticks_on()  # Turn on minor ticks
                 axs[0,0].xaxis.set_minor_locator(plt.MultipleLocator(10))  # Adjust x-axis minor ticks
                 axs[0,0].yaxis.set_minor_locator(plt.MultipleLocator(1))      # Adjust y-axis minor ticks
-                axs[0,0].legend(loc="upper left")
                 
                 axs[0,1].plot(df["zeit_block"], df["ext_ist_true"], label="$Δl_{ist}$", zorder=5)
                 axs[0,1].plot(df["zeit_block"], df["ext_soll_true"], label="$Δl_{soll}$")
                 axs[0,1].set(xlim=(0, t_max), xticks=np.arange(0, t_max+0.0001, tckr), xlabel=("$t_{block}$ [s]"),
                              ylim=(ext_min, ext_max), yticks=np.arange(ext_min, ext_max+0.0001, 20), ylabel=("Δl [µm]"))
                 text = "$l_0$ = " + f"{l0} µm"
-                axs[0,1].annotate(text, (10, ext_min+5))
+                axs[0,1].annotate(text, (10, ext_min+5), fontsize=14)
                 axs[0,1].minorticks_on()  # Turn on minor ticks
                 axs[0,1].xaxis.set_minor_locator(plt.MultipleLocator(10))  # Adjust x-axis minor ticks
                 axs[0,1].yaxis.set_minor_locator(plt.MultipleLocator(10))      # Adjust y-axis minor ticks
-                axs[0,1].legend(loc="upper left")
                 
                 axs[1,0].plot(df["true_strain"], df["true_stress"], label=f"IST-block {IST}")
                 axs[1,0].set(xlim=(eps_min-0.0005, eps_max+0.0005), xticks=np.arange(eps_min, eps_max+0.0000001, 0.005), xlabel=("True strain [-]"),
@@ -193,19 +192,22 @@ def ramberg_osgood_evaluation(config_file_path):
                 axs[1,0].minorticks_on()  # Turn on minor ticks
                 axs[1,0].xaxis.set_minor_locator(plt.MultipleLocator(0.001))  # Adjust x-axis minor ticks
                 axs[1,0].yaxis.set_minor_locator(plt.MultipleLocator(50))      # Adjust y-axis minor ticks
-                axs[1,0].legend(loc="upper left")
                 
                 axs[1,1].scatter(ascending_turning_points_df["true_strain"], ascending_turning_points_df["true_stress"], label = "Turning points")
                 axs[1,1].plot(ramberg_osgood_strain, ramberg_osgood_stress, label="Ramberg-Osgood", color="r")
                 axs[1,1].set(xlim=(0, eps_max), xticks=np.arange(0, eps_max+0.0025, 0.0025), xlabel=("True strain [-]"),
                              ylim=(0, max_stress), yticks=np.arange(0, max_stress+0.001, 100), ylabel=("True stress [MPa]"))
+                
                 text = "$ε = σ/E$ + $(σ/K')^{1/n'}$ \n" + f"$E={youngs_modulus}$ MPa \n$K'={np.round(K_,3)}$ MPa \n$n'={np.round(n_,3)}$"
-                axs[1,1].annotate(text, (eps_max-eps_max/3, 10))
+                axs[1,1].annotate(text, (eps_max-eps_max/3, 10), fontsize=14)
                 axs[1,1].minorticks_on()  # Turn on minor ticks
                 axs[1,1].xaxis.set_minor_locator(plt.MultipleLocator(0.0005))  # Adjust x-axis minor ticks
                 axs[1,1].yaxis.set_minor_locator(plt.MultipleLocator(25))      # Adjust y-axis minor ticks
-                axs[1,1].legend(loc="upper left")
-                
+                for i in [0, 1]:
+                    for j in [0, 1]:
+                        axs[i,j].tick_params(axis='both', labelsize=14)
+                        axs[i,j].legend(loc="upper left", fontsize=14)
+                        
                 plt.savefig(f"{folder}/Evaluation_{basename}_block-{block_list[i]}.png")
         
     plt.show()
@@ -217,9 +219,10 @@ def ramberg_osgood_evaluation(config_file_path):
 if __name__ == "__main__":
     # Set up argparse to read command line arguments
     parser = argparse.ArgumentParser(description="Load parameters from a JSON file.")
-    parser.add_argument("--config_path", type=str, default="H:\Privat\IST_config.json", help="Path to the JSON file")
+    parser.add_argument("--config_path", type=str, default=".\IST_config.json", help="Path to the JSON file")
 
     # Parse the arguments
     args = parser.parse_args()
     config_file_path=args.config_path
     ramberg_osgood_evaluation(config_file_path)
+
