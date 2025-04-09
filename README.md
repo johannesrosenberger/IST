@@ -1,17 +1,33 @@
 # IST repository
 This repository contains all scripts necessary to setup and evaluate an Incremental Step Test (IST). 
 
-### *IST_generator.py*
+### *Requirements*
+* `Python 3.x`
+* Required packages (can be installed via `requirements.txt`):
+  * `chardet>=5.2.0`
+  * `matplotlib>=3.4.0`
+  * `numpy>=1.21.0`
+  * `pandas>=1.3.0`
+
+### Usage of *IST_generator.py*
+* Run the script using the command line:
+```sh
+python IST_generator.py
+```
 * Can be used to create machine readable programs for the IST.
 * Simply follow the commands displayed in the console and the script returns a machine readable txt-file as well as a visualization of your ramp file. Both files are name after the following pattern, where ... resembles your input parameters. \
-  *`IST-eps_max_...-eps_dot_...-steps_...` (.txt or .png)
+  `IST-eps_max_...-eps_dot_...-steps_...` (.txt or .png)
 * The following example has a maximum strain of 1 %, a strain rate of 0.1 % per second and 20 steps \
   (see the example output `IST-eps_max_1.0-eps_dot_0.1-steps_20.txt` in the `examples` folder).
 
 ![IST-eps_max_1 0-eps_dot_0 1-steps_20](https://github.com/user-attachments/assets/3073e8c8-895d-45d3-a515-7b6cabbe6e9b)
 
-### *IST_solver.py*
-* The IST_solver uses the IST_config.json to read the output of an IST and calculates the Ramberg-Osgood parameters. 
+### Usage of *IST_solver.py*
+* Run the script using the command line:
+```sh
+python .\IST_solver.py --config_path .\IST_config.json
+```
+* The IST_solver uses the `IST_config.json` to read the output of an IST and calculates the Ramberg-Osgood parameters. 
   * `l0`: Enter the initial clip gage length in µm.
   * `d1`, `d2`, `d3`: Provide the specimen diameter in mm.
   * `skip_rows`: Define how many line have to be skipped in the input file (default = 17).
@@ -31,15 +47,9 @@ This repository contains all scripts necessary to setup and evaluate an Incremen
 
 ### *Run a test*
 * After cloning the repo, simply run the script by entering the following command into your console: \
-  `python .\IST_solver.py --config_path .\IST_config.json` 
+```sh
+python .\IST_solver.py --config_path .\IST_config.json
+```
 * `IST_solver.py` and `IST_config.json` must be in the same folder in order for the command to work like proposed.
 * The `txt_path` variable in `IST_config.json` will automatically link to the test data in the `test` folder.
 * You can compare the results to the examples given in the `examples` folder.
-
-### *Requirements*
-* `Python 3.x`
-* Required packages (can be installed via `requirements.txt`):
-  * `chardet>=5.2.0`
-  * `matplotlib>=3.4.0`
-  * `numpy>=1.21.0`
-  * `pandas>=1.3.0`
