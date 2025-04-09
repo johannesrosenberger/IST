@@ -35,3 +35,11 @@ This repository contains all scripts necessary to setup and evaluate an Incremen
 * `IST_solver.py` and `IST_config.json` must be in the same folder in order for the command to work like proposed.
 * The `txt_path` variable in `IST_config.json` will automatically link to the test data in the `test` folder.
 * You can compare the results to the examples given in the `examples` folder.
+
+### *Requirements*
+* `Python 3.x`
+* Required packages (can be installed via `requirements.txt`):
+ * `chardet>=5.2.0`
+ * `matplotlib>=3.4.0`
+ * `numpy>=1.21.0`
+ * `pandas>=1.3.0`
