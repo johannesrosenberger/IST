@@ -39,7 +39,7 @@ This repository contains all scripts necessary to setup and evaluate an Incremen
 ### *Requirements*
 * `Python 3.x`
 * Required packages (can be installed via `requirements.txt`):
- * `chardet>=5.2.0`
- * `matplotlib>=3.4.0`
- * `numpy>=1.21.0`
- * `pandas>=1.3.0`
+  * `chardet>=5.2.0`
+  * `matplotlib>=3.4.0`
+  * `numpy>=1.21.0`
+  * `pandas>=1.3.0`
